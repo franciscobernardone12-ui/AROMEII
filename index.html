@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AROME | Alta Floristería Digital</title>
+    <!-- Tailwind CSS para el diseño responsivo y moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuentes Premium: Playfair Display para títulos y Montserrat para textos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome para íconos elegantes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Aplicamos las fuentes corporativas de AROME */
+        .font-serif-premium {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-sans-premium {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Paleta de colores Luxury no-negociable */
+        :root {
+            --color-crema: #FCFBFA;       /* 60% Dominante */
+            --color-esmeralda: #0D2C1E;   /* 30% Secundario */
+            --color-oro: #C5A880;         /* 10% Acento */
+            --color-salvia: #3D4F45;      /* Textos */
+        }
+
+        body {
+            background-color: var(--color-crema);
+            color: var(--color-salvia);
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body class="font-sans-premium min-h-screen flex flex-col">
+
+    <!-- 1. ENCABEZADO PREMIUM (NAVBAR) -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-[#0D2C1E]/5 px-6 py-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo elegante -->
+            <a href="#" class="flex flex-col">
+                <span class="font-serif-premium text-3xl font-bold tracking-widest text-[#0D2C1E]">AROME</span>
+                <span class="text-[9px] uppercase tracking-[0.3em] text-[#C5A880] font-semibold">Floristería de Autor</span>
+            </a>
+            <!-- Teléfono de contacto de acceso rápido -->
+            <div class="hidden md:flex items-center gap-3 text-sm text-[#0D2C1E]">
+                <span class="bg-[#0D2C1E]/5 p-2 rounded-full text-[#C5A880]">
+                    <i class="fa-solid fa-phone"></i>
+                </span>
+                <div>
+                    <p class="text-[10px] uppercase tracking-wider text-gray-400">Atención Personalizada</p>
+                    <p class="font-semibold">+591 70000000</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. HÉROE EMOCIONAL (HERO SECTION) -->
+    <section class="relative bg-[#0D2C1E] text-[#FCFBFA] py-24 px-6 overflow-hidden">
+        <!-- Blobs orgánicos de fondo decorativos -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <div class="absolute -top-12 -left-12 w-96 height-96 rounded-full bg-[#C5A880] filter blur-3xl"></div>
+            <div class="absolute -bottom-12 right-12 w-96 height-96 rounded-full bg-white filter blur-3xl"></div>
+        </div>
+        
+        <div class="relative max-w-5xl mx-auto text-center">
+            <span class="text-xs uppercase tracking-[0.4em] text-[#C5A880] font-bold block mb-4">Experiencias Memorables</span>
+            <h1 class="font-serif-premium text-5xl md:text-7xl font-bold mb-6 leading-tight">Elegancia Hecha Flor</h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                Diseños florales de autor concebidos para conmover. Selecciona tu arreglo ideal y personaliza tu entrega con un solo clic a WhatsApp.
+            </p>
+            <a href="#catalogo" class="inline-block bg-[#C5A880] hover:bg-[#b0926a] text-white px-8 py-4 rounded-full font-semibold tracking-wider uppercase text-xs transition duration-300 shadow-lg">
+                Explorar Colección de Autor
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. BENEFICIOS CLAVE -->
+    <section class="py-12 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="flex items-start gap-4">
+                <span class="text-3xl text-[#C5A880] mt-1"><i class="fa-solid fa-truck-ramp-box"></i></span>
+                <div>
+                    <h4 class="font-serif-premium font-bold text-lg text-[#0D2C1E] mb-1">Envío Seguro</h4>
+                    <p class="text-sm text-gray-500">Transporte climatizado para conservar la frescura intacta del arreglo.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4">
+                <span class="text-3xl text-[#C5A880] mt-1"><i class="fa-solid fa-award"></i></span>
+                <div>
+                    <h4 class="font-serif-premium font-bold text-lg text-[#0D2C1E] mb-1">Flores de Exportación</h4>
+                    <p class="text-sm text-gray-500">Seleccionadas rigurosamente cada mañana por nuestros floristas.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4">
+                <span class="text-3xl text-[#C5A880] mt-1"><i class="fa-solid fa-square-envelope"></i></span>
+                <div>
+                    <h4 class="font-serif-premium font-bold text-lg text-[#0D2C1E] mb-1">Dedicatoria Premium</h4>
+                    <p class="text-sm text-gray-500">Tu mensaje de amor escrito en tarjeta fina con caligrafía de cortesía.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CATÁLOGO DINÁMICO (SECCIÓN PRINCIPAL) -->
+    <main class="flex-grow max-w-7xl mx-auto w-full px-6 py-16" id="catalogo">
+        <div class="text-center mb-16">
+            <h2 class="font-serif-premium text-4xl font-bold text-[#0D2C1E] mb-4">Nuestro Catálogo de Autor</h2>
+            <div class="w-16 h-[2px] bg-[#C5A880] mx-auto mb-4"></div>
+            <p class="text-gray-500 max-w-md mx-auto text-sm">Nuestras flores frescas están listas para convertirse en momentos inolvidables.</p>
+        </div>
+
+        <!-- El Grid del Catálogo (Se renderiza por JavaScript) -->
+        <div id="grid-productos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Los productos se inyectarán de manera automática aquí desde el script inferior -->
+        </div>
+    </main>
+
+    <!-- 5. FORMULARIO DE PEDIDOS ULTRA-PREMIUM -->
+    <section class="bg-white py-16 px-6 border-t border-gray-100" id="seccion-pedido">
+        <div class="max-w-3xl mx-auto bg-[#FCFBFA] rounded-2xl border border-gray-100 shadow-xl overflow-hidden">
+            <!-- Encabezado del Formulario -->
+            <div class="bg-[#0D2C1E] text-white p-8 text-center">
+                <span class="text-xs uppercase tracking-widest text-[#C5A880] font-semibold">Paso Final</span>
+                <h3 class="font-serif-premium text-3xl font-bold mt-2">Detalles de Entrega</h3>
+                <p class="text-xs text-gray-300 mt-2">Completa el formulario para enviar tus datos a la base de datos y abrir WhatsApp.</p>
+            </div>
+
+            <!-- Campos del Formulario -->
+            <form id="formulario-pedido" class="p-8 md:p-12 space-y-6">
+                
+                <!-- 1. Selección de Producto -->
+                <div>
+                    <label for="campo-producto" class="block text-xs uppercase tracking-wider font-semibold text-gray-500 mb-2">Arreglo Seleccionado</label>
+                    <div class="relative">
+                        <select id="campo-producto" required class="w-full bg-white border border-gray-200 rounded-lg py-3 px-4 text-[#0D2C1E] focus:outline-none focus:border-[#C5A880] appearance-none transition">
+                            <option value="" disabled selected>-- Elige tu arreglo floral --</option>
+                            <!-- Se auto-rellenará con JS -->
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Nombre del Cliente -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="campo-cliente" class="block text-xs uppercase tracking-wider font-semibold text-gray-500 mb-2">Tu Nombre Completo</label>
+                        <input type="text" id="campo-cliente" required placeholder="Ej. Francisco Bernardone" class="w-full bg-white border border-gray-200 rounded-lg py-3 px-4 text-[#0D2C1E] focus:outline-none focus:border-[#C5A880] transition">
+                    </div>
+                    <div>
+                        <label for="campo-whatsapp" class="block text-xs uppercase tracking-wider font-semibold text-gray-500 mb-2">Tu WhatsApp de Contacto</label>
+                        <input type="tel" id="campo-whatsapp" required placeholder="Ej. +591 70000000" class="w-full bg-white border border-gray-200 rounded-lg py-3 px-4 text-[#0D2C1E] focus:outline-none focus:border-[#C5A880] transition">
+                    </div>
+                </div>
+
+                <!-- 3. Dirección Exacta -->
+                <div>
+                    <label for="campo-direccion" class="block text-xs uppercase tracking-wider font-semibold text-gray-500 mb-2">Dirección de Entrega</label>
+                    <input type="text" id="campo-direccion" required placeholder="Calle, Número, Edificio, Referencia visual" class="w-full bg-white border border-gray-200 rounded-lg py-3 px-4 text-[#0D2C1E] focus:outline-none focus:border-[#C5A880] transition">
+                </div>
+
+                <!-- 4. Zona de Envío (Calculadora Dinámica de Precios) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="campo-zona" class="block text-xs uppercase tracking-wider font-semibold text-gray-500 mb-2">Zona de Envío</label>
+                        <div class="relative">
+                            <select id="campo-zona" required class="w-full bg-white border border-gray-200 rounded-lg py-3 px-4 text-[#0D2C1E] focus:outline-none focus:border-[#C5A880] appearance-none transition">
+                                <option value="" disabled selected>-- Selecciona zona --</option>
+                                <option value="Centro" data-costo="0">Zona Centro (Envío Gratis) - $0</option>
+                                <option value="Norte" data-costo="15">Zona Norte - $15</option>
+                                <option value="Sur" data-costo="20">Zona Sur - $20</option>
+                                <option value="Este" data-costo="15">Zona Este - $15</option>
+                                <option value="Oeste" data-costo="15">Zona Oeste - $15</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="campo-fecha" class="block text-xs uppercase tracking-wider font-semibold text-gray-500 mb-2">Fecha de Entrega Deseada</label>
+                        <input type="date" id="campo-fecha" required class="w-full bg-white border border-gray-200 rounded-lg py-3 px-4 text-[#0D2C1E] focus:outline-none focus:border-[#C5A880] transition">
+                    </div>
+                </div>
+
+                <!-- 5. Mensaje de la Tarjeta de Dedicatoria -->
+                <div>
+                    <label for="campo-dedicatoria" class="block text-xs uppercase tracking-wider font-semibold text-gray-500 mb-2">Mensaje para la Tarjeta (Opcional)</label>
+                    <textarea id="campo-dedicatoria" rows="3" placeholder="Escribe el mensaje de amor, felicitaciones o agradecimiento que irá en el sobre premium..." class="w-full bg-white border border-gray-200 rounded-lg py-3 px-4 text-[#0D2C1E] focus:outline-none focus:border-[#C5A880] transition"></textarea>
+                </div>
+
+                <!-- 6. CUADRO RESUMEN DE COMPRA FINANCIERO -->
+                <div class="bg-[#0D2C1E]/5 p-6 rounded-xl border border-[#0D2C1E]/5">
+                    <h4 class="font-serif-premium font-bold text-[#0D2C1E] mb-3 text-lg">Resumen de Cuenta</h4>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-500">Arreglo Floral:</span>
+                            <span class="font-semibold text-[#0D2C1E]" id="resumen-producto-monto">$0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-500">Costo de Envío:</span>
+                            <span class="font-semibold text-[#0D2C1E]" id="resumen-envio-monto">$0.00</span>
+                        </div>
+                        <div class="border-t border-gray-200 pt-2 flex justify-between font-bold text-base">
+                            <span class="text-[#0D2C1E]">Total a Pagar:</span>
+                            <span class="text-[#C5A880]" id="resumen-total">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón de Envío del Pedido -->
+                <button type="submit" id="boton-enviar" class="w-full bg-[#C5A880] hover:bg-[#b0926a] text-white font-bold py-4 px-6 rounded-full tracking-wider uppercase text-sm transition shadow-lg flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Confirmar Pedido & Enviar por WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 6. PIE DE PÁGINA (FOOTER) -->
+    <footer class="bg-[#0D2C1E] text-gray-400 py-12 px-6 text-center border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-left">
+                <span class="font-serif-premium text-2xl font-bold tracking-widest text-[#FCFBFA]">AROME</span>
+                <p class="text-xs mt-1 text-gray-500">Reinventando el arte de regalar flores.</p>
+            </div>
+            <div class="text-sm">
+                <p>&copy; 2026 AROME Premium Florist. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         7. MOTOR INTELIGENTE EN JAVASCRIPT (SISTEMA DE LA WEB)
+         ========================================== -->
+    <script>
+        // ==========================================
+        // CONFIGURACIÓN DE TU NEGOCIO (¡Edita esto!)
+        // ==========================================
+        // 1. Tu número de WhatsApp de ventas con código de país (ej. Bolivia: +591, México: +52, etc.) sin espacios ni signos +
+        const TELEFONO_WHATSAPP_VENTAS = "591"60126617; 
+        
+        // 2. Pega aquí el enlace URL Web App que obtendrás al publicar tu Google Apps Script
+        const GOOGLE_SCRIPT_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx1Wkh6TOFZ7-mVXiRW293vhoM1VOaQ5fbG13sN2oLw07qnXRbem9fY3Kmljz53Dv_P/exec"; 
+
+        // ==========================================
+        // CATÁLOGO DE PRODUCTOS DINÁMICO E ILIMITADO
+        // ==========================================
+        // Para añadir más flores: copia un objeto de estos completo entre llaves {}, sepáralo con coma y edita sus datos.
+        const CATALOGO_PRODUCTOS = [
+            {
+                id: 1,
+                nombre: "Caja Romántica de Rosas",
+                precio: 250,
+                categoria: "MÁS VENDIDO",
+                descripcion: "24 espléndidas rosas rojas seleccionadas, presentadas en una sofisticada caja rígida de autor con lazo satinado.",
+                imagen: "http://googleusercontent.com/image_collection/image_retrieval/8615058446699052869_0",
+                badge: "Más Vendido"
+            },
+            {
+                id: 2,
+                nombre: "Ramo de Tulipanes Elegantes",
+                precio: 380,
+                categoria: "EDICIÓN PRIMAVERA",
+                descripcion: "15 hermosos tulipanes holandeses en tonos rosados envueltos en papel craft premium italiano.",
+                imagen: "http://googleusercontent.com/image_collection/image_retrieval/8615058446699052869_1",
+                badge: "Primavera"
+            },
+            {
+                id: 3,
+                nombre: "Brillo de Girasoles",
+                precio: 180,
+                categoria: "TEMPORADA",
+                descripcion: "Arreglo alegre con 5 girasoles gigantes importados, acompañados de follaje fino silvestre.",
+                imagen: "http://googleusercontent.com/image_collection/image_retrieval/8615058446699052869_2",
+                badge: "Exclusivo"
+            },
+            {
+                id: 4,
+                nombre: "Bouquet Silvestre Imperial",
+                precio: 420,
+                categoria: "DELUXE",
+                descripcion: "Exclusivo ensamble de flores exóticas, astromelias y eucalipto preservado para gustos muy exigentes.",
+                imagen: "http://googleusercontent.com/image_collection/image_retrieval/8615058446699052869_3",
+                badge: "Diseño Autor"
+            }
+            // <-- Puedes añadir el producto 5 aquí siguiendo exactamente esta misma estructura de llaves
+        ];
+
+        // Elementos interactivos de la interfaz del DOM
+        const gridProductos = document.getElementById("grid-productos");
+        const selectorProducto = document.getElementById("campo-producto");
+        const selectorZona = document.getElementById("campo-zona");
+        
+        // Elementos del resumen de costos
+        const resumenProductoMonto = document.getElementById("resumen-producto-monto");
+        const resumenEnvioMonto = document.getElementById("resumen-envio-monto");
+        const resumenTotal = document.getElementById("resumen-total");
+
+        // Variables de estado interno financiero
+        let costoArregloSeleccionado = 0;
+        let costoEnvioSeleccionado = 0;
+
+        // ==========================================
+        // 1. RENDERIZACIÓN DEL CATÁLOGO EN TIEMPO REAL
+        // ==========================================
+        function cargarCatalogo() {
+            gridProductos.innerHTML = "";
+            
+            CATALOGO_PRODUCTOS.forEach(producto => {
+                // Inyección dinámica de las tarjetas HTML para cada producto del catálogo
+                const tarjetaHtml = `
+                    <div class="bg-white rounded-xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
+                        <div class="relative h-64 overflow-hidden bg-gray-100">
+                            <img src="${producto.imagen}" alt="${producto.nombre}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            ${producto.badge ? `<span class="absolute top-4 left-4 bg-[#0D2C1E] text-[#FCFBFA] text-[10px] font-bold px-3 py-1 uppercase tracking-wider rounded-full shadow-sm">${producto.badge}</span>` : ""}
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-wider text-[#C5A880] font-semibold">${producto.categoria}</span>
+                                <h3 class="font-serif-premium font-bold text-xl text-[#0D2C1E] mt-1 mb-2">${producto.nombre}</h3>
+                                <p class="text-xs text-gray-500 leading-relaxed mb-4">${producto.descripcion}</p>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center pt-4 border-t border-gray-50">
+                                    <span class="text-2xl font-bold text-[#0D2C1E] font-serif-premium">$${producto.precio}</span>
+                                    <button onclick="seleccionarYRedirigir(${producto.id})" class="bg-[#C5A880] hover:bg-[#0D2C1E] text-white text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full transition duration-300">
+                                        Solicitar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                gridProductos.innerHTML += tarjetaHtml;
+
+                // Añadir el producto como opción dentro de nuestro formulario
+                const opcionSelect = document.createElement("option");
+                opcionSelect.value = producto.nombre;
+                opcionSelect.dataset.precio = producto.precio;
+                opcionSelect.textContent = `${producto.nombre} - $${producto.precio}`;
+                selectorProducto.appendChild(opcionSelect);
+            });
+        }
+
+        // Accionador para cuando el cliente pulsa el botón "Solicitar" de una tarjeta de flor
+        window.seleccionarYRedirigir = function(productoId) {
+            const productoEncontrado = CATALOGO_PRODUCTOS.find(p => p.id === productoId);
+            if (productoEncontrado) {
+                // Sincronizamos el selector del formulario automáticamente
+                selectorProducto.value = productoEncontrado.nombre;
+                actualizarCalculos();
+                
+                // Desplazamos con una suave animación hasta el formulario de checkout
+                document.getElementById("seccion-pedido").scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // ==========================================
+        // 2. CALCULADORA FINANCIERA (PRECIOS DINÁMICOS)
+        // ==========================================
+        function actualizarCalculos() {
+            // Obtener el precio del arreglo seleccionado en el dropdown
+            const opcionProducto = selectorProducto.options[selectorProducto.selectedIndex];
+            if (opcionProducto && opcionProducto.value !== "") {
+                costoArregloSeleccionado = Number(opcionProducto.dataset.precio);
+                resumenProductoMonto.textContent = `$${costoArregloSeleccionado.toFixed(2)}`;
+            } else {
+                costoArregloSeleccionado = 0;
+                resumenProductoMonto.textContent = `$0.00`;
+            }
+
+            // Obtener el costo de envío según la zona elegida
+            const opcionZona = selectorZona.options[selectorZona.selectedIndex];
+            if (opcionZona && opcionZona.value !== "") {
+                costoEnvioSeleccionado = Number(opcionZona.dataset.costo);
+                resumenEnvioMonto.textContent = `$${costoEnvioSeleccionado.toFixed(2)}`;
+            } else {
+                costoEnvioSeleccionado = 0;
+                resumenEnvioMonto.textContent = `$0.00`;
+            }
+
+            // Actualizar el gran total monetario
+            const total = costoArregloSeleccionado + costoEnvioSeleccionado;
+            resumenTotal.textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Escuchadores de cambio para refrescar los montos
+        selectorProducto.addEventListener("change", actualizarCalculos);
+        selectorZona.addEventListener("change", actualizarCalculos);
+
+        // ==========================================
+        // 3. ENVÍO DE DATOS A GOOGLE SHEETS & REDIRECCIÓN A WHATSAPP
+        // ==========================================
+        const formulario = document.getElementById("formulario-pedido");
+        const botonEnviar = document.getElementById("boton-enviar");
+
+        formulario.addEventListener("submit", async function(evento) {
+            evento.preventDefault(); // Evitamos que la página se recargue
+
+            // Bloquear el botón temporalmente para evitar doble clic accidental
+            botonEnviar.disabled = true;
+            botonEnviar.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Procesando Pedido Premium...`;
+
+            // Capturar la información ingresada por el usuario
+            const producto = selectorProducto.value;
+            const cliente = document.getElementById("campo-cliente").value;
+            const whatsApp = document.getElementById("campo-whatsapp").value;
+            const direccion = document.getElementById("campo-direccion").value;
+            const zonaEnvio = selectorZona.value;
+            const fecha = document.getElementById("campo-fecha").value;
+            const dedicatoria = document.getElementById("campo-dedicatoria").value || "Sin dedicatoria";
+
+            // Paquete estructurado de datos para nuestra API de Google Sheets
+            const payloadDatos = {
+                cliente: cliente,
+                producto: producto,
+                montoProducto: costoArregloSeleccionado,
+                zonaEnvio: zonaEnvio,
+                costoEnvio: costoEnvioSeleccionado,
+                whatsApp: whatsApp
+            };
+
+            // Intentamos enviar los datos a Google Sheets
+            try {
+                // Validación para asegurarnos que se modificó la URL por defecto
+                if (GOOGLE_SCRIPT_WEB_APP_URL && !GOOGLE_SCRIPT_WEB_APP_URL.includes("XXXXXXXXXXXX")) {
+                    await fetch(GOOGLE_SCRIPT_WEB_APP_URL, {
+                        method: "POST",
+                        mode: "no-cors", // Requerido para evitar problemas CORS con Apps Script
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(payloadDatos)
+                    });
+                }
+            } catch (error) {
+                console.error("Error al registrar en Google Sheets:", error);
+            }
+
+            // ==========================================
+            // 4. CONSTRUCCIÓN DE LA REDIRECCIÓN A WHATSAPP
+            // ==========================================
+            const totalFinal = costoArregloSeleccionado + costoEnvioSeleccionado;
+            
+            // Creamos un mensaje extremadamente refinado, estructurado y profesional
+            const mensajeWhatsApp = `*AROME - SOLICITUD DE NUEVA ORDEN PREMIUM* 🌸\n\n` +
+                                    `*INFORMACIÓN DEL CLIENTE:*\n` +
+                                    `• *Nombre:* ${cliente}\n` +
+                                    `• *Contacto:* ${whatsApp}\n\n` +
+                                    `*DETALLE DEL PRODUCTO:*\n` +
+                                    `• *Arreglo:* ${producto} ($${costoArregloSeleccionado})\n\n` +
+                                    `*LOGÍSTICA DE ENTREGA:*\n` +
+                                    `• *Dirección:* ${direccion}\n` +
+                                    `• *Zona:* ${zonaEnvio} ($${costoEnvioSeleccionado})\n` +
+                                    `• *Fecha de Entrega:* ${fecha}\n\n` +
+                                    `*TARJETA DE DEDICATORIA:*\n` +
+                                    `_"${dedicatoria}"_\n\n` +
+                                    `*RESUMEN FINANCIERO:*\n` +
+                                    `• *Total a Pagar:* $${totalFinal.toFixed(2)}\n\n` +
+                                    `_A la espera de los métodos de pago para procesar mi orden de inmediato._ ✨`;
+
+            // Codificamos el texto para enviarlo por URL
+            const urlWhatsApp = `https://wa.me/${TELEFONO_WHATSAPP_VENTAS}?text=${encodeURIComponent(mensajeWhatsApp)}`;
+
+            // Restaurar el botón original
+            botonEnviar.disabled = false;
+            botonEnviar.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Confirmar Pedido & Enviar por WhatsApp`;
+
+            // Abrir WhatsApp en una nueva pestaña del navegador del cliente
+            window.open(urlWhatsApp, "_blank");
+
+            // Opcional: Reiniciar el formulario
+            formulario.reset();
+            actualizarCalculos();
+            alert("¡Felicidades! Tu orden se está transfiriendo a WhatsApp con nuestro asesor para cerrar la compra.");
+        });
+
+        // Inicializar el sistema al arrancar el archivo
+        window.addEventListener("DOMContentLoaded", cargarCatalogo);
+    </script>
+</body>
+</html>
