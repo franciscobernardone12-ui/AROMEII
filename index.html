@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* Aplicamos las fuentes corporativas de AROME */
         .font-serif-premium {
             font-family: 'Playfair Display', serif;
         }
@@ -22,7 +21,6 @@
             font-family: 'Montserrat', sans-serif;
         }
         
-        /* Paleta de colores Luxury no-negociable */
         :root {
             --color-crema: #FCFBFA;       /* 60% Dominante */
             --color-esmeralda: #0D2C1E;   /* 30% Secundario */
@@ -42,30 +40,27 @@
     <!-- 1. ENCABEZADO PREMIUM (NAVBAR) -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-[#0D2C1E]/5 px-6 py-4 shadow-sm">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <!-- Logo elegante -->
             <a href="#" class="flex flex-col">
                 <span class="font-serif-premium text-3xl font-bold tracking-widest text-[#0D2C1E]">AROME</span>
                 <span class="text-[9px] uppercase tracking-[0.3em] text-[#C5A880] font-semibold">Floristería de Autor</span>
             </a>
-            <!-- Teléfono de contacto de acceso rápido -->
             <div class="hidden md:flex items-center gap-3 text-sm text-[#0D2C1E]">
                 <span class="bg-[#0D2C1E]/5 p-2 rounded-full text-[#C5A880]">
                     <i class="fa-solid fa-phone"></i>
                 </span>
                 <div>
                     <p class="text-[10px] uppercase tracking-wider text-gray-400">Atención Personalizada</p>
-                    <p class="font-semibold">+591 60126617</p>
+                    <p class="font-semibold" id="contacto-header">+591 60126617</p>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- 2. HÉROE EMOCIONAL (HERO SECTION) -->
+    <!-- 2. HÉROE EMOCIONAL -->
     <section class="relative bg-[#0D2C1E] text-[#FCFBFA] py-24 px-6 overflow-hidden">
-        <!-- Blobs orgánicos de fondo decorativos -->
         <div class="absolute inset-0 opacity-10 pointer-events-none">
-            <div class="absolute -top-12 -left-12 w-96 height-96 rounded-full bg-[#C5A880] filter blur-3xl"></div>
-            <div class="absolute -bottom-12 right-12 w-96 height-96 rounded-full bg-white filter blur-3xl"></div>
+            <div class="absolute -top-12 -left-12 w-96 h-96 rounded-full bg-[#C5A880] filter blur-3xl"></div>
+            <div class="absolute -bottom-12 right-12 w-96 h-96 rounded-full bg-white filter blur-3xl"></div>
         </div>
         
         <div class="relative max-w-5xl mx-auto text-center">
@@ -107,40 +102,40 @@
         </div>
     </section>
 
-    <!-- 4. CATÁLOGO DINÁMICO (SECCIÓN PRINCIPAL) -->
+    <!-- 4. CATÁLOGO DINÁMICO -->
     <main class="flex-grow max-w-7xl mx-auto w-full px-6 py-16" id="catalogo">
         <div class="text-center mb-16">
             <h2 class="font-serif-premium text-4xl font-bold text-[#0D2C1E] mb-4">Nuestro Catálogo de Autor</h2>
             <div class="w-16 h-[2px] bg-[#C5A880] mx-auto mb-4"></div>
-            <p class="text-gray-500 max-w-md mx-auto text-sm">Nuestras flores frescas están listas para convertirse en momentos inolvidables.</p>
+            <p class="text-gray-500 max-w-md mx-auto text-sm">Gestionado en tiempo real. Selecciona el ramo que desees para procesar tu orden.</p>
         </div>
 
-        <!-- El Grid del Catálogo (Se renderiza por JavaScript) -->
-        <div id="grid-productos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Los productos se inyectarán de manera automática aquí desde el script inferior -->
+        <!-- Mensaje de estado de carga -->
+        <div id="estado-carga" class="text-center py-8 text-[#C5A880]">
+            <i class="fa-solid fa-spinner animate-spin text-3xl mb-2"></i>
+            <p class="text-sm font-semibold uppercase tracking-wider">Sincronizando Catálogo Exclusivo...</p>
+        </div>
+
+        <div id="grid-productos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 hidden">
+            <!-- Los productos se inyectarán de manera automática aquí -->
         </div>
     </main>
 
     <!-- 5. FORMULARIO DE PEDIDOS ULTRA-PREMIUM -->
     <section class="bg-white py-16 px-6 border-t border-gray-100" id="seccion-pedido">
         <div class="max-w-3xl mx-auto bg-[#FCFBFA] rounded-2xl border border-gray-100 shadow-xl overflow-hidden">
-            <!-- Encabezado del Formulario -->
             <div class="bg-[#0D2C1E] text-white p-8 text-center">
                 <span class="text-xs uppercase tracking-widest text-[#C5A880] font-semibold">Paso Final</span>
                 <h3 class="font-serif-premium text-3xl font-bold mt-2">Detalles de Entrega</h3>
                 <p class="text-xs text-gray-300 mt-2">Completa el formulario para enviar tus datos a la base de datos y abrir WhatsApp.</p>
             </div>
 
-            <!-- Campos del Formulario -->
             <form id="formulario-pedido" class="p-8 md:p-12 space-y-6">
-                
-                <!-- 1. Selección de Producto -->
                 <div>
                     <label for="campo-producto" class="block text-xs uppercase tracking-wider font-semibold text-gray-500 mb-2">Arreglo Seleccionado</label>
                     <div class="relative">
                         <select id="campo-producto" required class="w-full bg-white border border-gray-200 rounded-lg py-3 px-4 text-[#0D2C1E] focus:outline-none focus:border-[#C5A880] appearance-none transition">
-                            <option value="" disabled selected>-- Elige tu arreglo floral --</option>
-                            <!-- Se auto-rellenará con JS -->
+                            <option value="" disabled selected>-- Cargando opciones florales --</option>
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
                             <i class="fa-solid fa-chevron-down text-xs"></i>
@@ -148,7 +143,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Nombre del Cliente -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="campo-cliente" class="block text-xs uppercase tracking-wider font-semibold text-gray-500 mb-2">Tu Nombre Completo</label>
@@ -160,13 +154,11 @@
                     </div>
                 </div>
 
-                <!-- 3. Dirección Exacta -->
                 <div>
                     <label for="campo-direccion" class="block text-xs uppercase tracking-wider font-semibold text-gray-500 mb-2">Dirección de Entrega</label>
                     <input type="text" id="campo-direccion" required placeholder="Calle, Número, Edificio, Referencia visual" class="w-full bg-white border border-gray-200 rounded-lg py-3 px-4 text-[#0D2C1E] focus:outline-none focus:border-[#C5A880] transition">
                 </div>
 
-                <!-- 4. Zona de Envío (Calculadora Dinámica de Precios) -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="campo-zona" class="block text-xs uppercase tracking-wider font-semibold text-gray-500 mb-2">Zona de Envío</label>
@@ -190,13 +182,11 @@
                     </div>
                 </div>
 
-                <!-- 5. Mensaje de la Tarjeta de Dedicatoria -->
                 <div>
                     <label for="campo-dedicatoria" class="block text-xs uppercase tracking-wider font-semibold text-gray-500 mb-2">Mensaje para la Tarjeta (Opcional)</label>
-                    <textarea id="campo-dedicatoria" rows="3" placeholder="Escribe el mensaje de amor, felicitaciones o agradecimiento que irá en el sobre premium..." class="w-full bg-white border border-gray-200 rounded-lg py-3 px-4 text-[#0D2C1E] focus:outline-none focus:border-[#C5A880] transition"></textarea>
+                    <textarea id="campo-dedicatoria" rows="3" placeholder="Escribe el mensaje de amor que irá en el sobre premium..." class="w-full bg-white border border-gray-200 rounded-lg py-3 px-4 text-[#0D2C1E] focus:outline-none focus:border-[#C5A880] transition"></textarea>
                 </div>
 
-                <!-- 6. CUADRO RESUMEN DE COMPRA FINANCIERO -->
                 <div class="bg-[#0D2C1E]/5 p-6 rounded-xl border border-[#0D2C1E]/5">
                     <h4 class="font-serif-premium font-bold text-[#0D2C1E] mb-3 text-lg">Resumen de Cuenta</h4>
                     <div class="space-y-2 text-sm">
@@ -215,7 +205,6 @@
                     </div>
                 </div>
 
-                <!-- Botón de Envío del Pedido -->
                 <button type="submit" id="boton-enviar" class="w-full bg-[#C5A880] hover:bg-[#b0926a] text-white font-bold py-4 px-6 rounded-full tracking-wider uppercase text-sm transition shadow-lg flex items-center justify-center gap-2">
                     <i class="fa-solid fa-paper-plane"></i>
                     <span>Confirmar Pedido & Enviar por WhatsApp</span>
@@ -224,7 +213,6 @@
         </div>
     </section>
 
-    <!-- 6. PIE DE PÁGINA (FOOTER) -->
     <footer class="bg-[#0D2C1E] text-gray-400 py-12 px-6 text-center border-t border-white/5">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-left">
@@ -237,89 +225,101 @@
         </div>
     </footer>
 
-    <!-- ==========================================
-         7. MOTOR INTELIGENTE EN JAVASCRIPT (SISTEMA DE LA WEB)
-         ========================================== -->
     <script>
         // ==========================================
-        // CONFIGURACIÓN DE TU NEGOCIO (¡Edita esto!)
+        // CONFIGURACIÓN DE TU NEGOCIO (¡Pon tus datos!)
         // ==========================================
-        // 1. Tu número de WhatsApp de ventas con código de país (ej. Bolivia: +591, México: +52, etc.) sin espacios ni signos +
-        const TELEFONO_WHATSAPP_VENTAS = "591"60126617; 
-        
-        // 2. Pega aquí el enlace URL Web App que obtendrás al publicar tu Google Apps Script
+        const TELEFONO_WHATSAPP_VENTAS = "59160126617"; // Tu teléfono sin espacios ni signos +
         const GOOGLE_SCRIPT_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx1Wkh6TOFZ7-mVXiRW293vhoM1VOaQ5fbG13sN2oLw07qnXRbem9fY3Kmljz53Dv_P/exec"; 
 
+        // Mostrar el teléfono dinámicamente en el navbar superior
+        document.getElementById("contacto-header").textContent = `+${TELEFONO_WHATSAPP_VENTAS}`;
+
         // ==========================================
-        // CATÁLOGO DE PRODUCTOS DINÁMICO E ILIMITADO
+        // CATÁLOGO DE RESPALDO (Por si falla internet al conectar con Sheets)
         // ==========================================
-        // Para añadir más flores: copia un objeto de estos completo entre llaves {}, sepáralo con coma y edita sus datos.
-        const CATALOGO_PRODUCTOS = [
+        const CATALOGO_RESPALDO = [
             {
                 id: 1,
-                nombre: "Caja Romántica de Rosas",
+                nombre: "Caja Romántica de Rosas (Local)",
                 precio: 250,
                 categoria: "MÁS VENDIDO",
-                descripcion: "24 espléndidas rosas rojas seleccionadas, presentadas en una sofisticada caja rígida de autor con lazo satinado.",
-                imagen: "http://googleusercontent.com/image_collection/image_retrieval/8615058446699052869_0",
+                descripcion: "24 espléndidas rosas rojas seleccionadas en sofisticada caja rígida de autor.",
+                imagen: "https://laflora.ae/cdn/shop/files/LAFLORA-1_7878fc6d-bc78-4662-88f5-43102715c060.jpg?v=1764680685&width=1946",
                 badge: "Más Vendido"
             },
             {
                 id: 2,
-                nombre: "Ramo de Tulipanes Elegantes",
+                nombre: "Ramo de Tulipanes Elegantes (Local)",
                 precio: 380,
                 categoria: "EDICIÓN PRIMAVERA",
-                descripcion: "15 hermosos tulipanes holandeses en tonos rosados envueltos en papel craft premium italiano.",
-                imagen: "http://googleusercontent.com/image_collection/image_retrieval/8615058446699052869_1",
+                descripcion: "15 hermosos tulipanes holandeses en tonos rosados.",
+                imagen: "https://www.florismdeart.com.my/cdn/shop/products/IMG_1256.jpg?v=1638338321&width=1946",
                 badge: "Primavera"
-            },
-            {
-                id: 3,
-                nombre: "Brillo de Girasoles",
-                precio: 180,
-                categoria: "TEMPORADA",
-                descripcion: "Arreglo alegre con 5 girasoles gigantes importados, acompañados de follaje fino silvestre.",
-                imagen: "http://googleusercontent.com/image_collection/image_retrieval/8615058446699052869_2",
-                badge: "Exclusivo"
-            },
-            {
-                id: 4,
-                nombre: "Bouquet Silvestre Imperial",
-                precio: 420,
-                categoria: "DELUXE",
-                descripcion: "Exclusivo ensamble de flores exóticas, astromelias y eucalipto preservado para gustos muy exigentes.",
-                imagen: "http://googleusercontent.com/image_collection/image_retrieval/8615058446699052869_3",
-                badge: "Diseño Autor"
             }
-            // <-- Puedes añadir el producto 5 aquí siguiendo exactamente esta misma estructura de llaves
         ];
 
-        // Elementos interactivos de la interfaz del DOM
+        let CATALOGO_ACTIVO = [
+              id: 1,
+                nombre: "Caja Romántica de Rosas (Local)",
+                precio: 250,
+                categoria: "MÁS VENDIDO",
+                descripcion: "24 espléndidas rosas rojas seleccionadas en sofisticada caja rígida de autor.",
+                imagen: "https://laflora.ae/cdn/shop/files/LAFLORA-1_7878fc6d-bc78-4662-88f5-43102715c060.jpg?v=1764680685&width=1946",
+                badge: "Más Vendido"
+        ];
+
+        // Elementos del DOM
         const gridProductos = document.getElementById("grid-productos");
+        const estadoCarga = document.getElementById("estado-carga");
         const selectorProducto = document.getElementById("campo-producto");
         const selectorZona = document.getElementById("campo-zona");
-        
-        // Elementos del resumen de costos
         const resumenProductoMonto = document.getElementById("resumen-producto-monto");
         const resumenEnvioMonto = document.getElementById("resumen-envio-monto");
         const resumenTotal = document.getElementById("resumen-total");
 
-        // Variables de estado interno financiero
         let costoArregloSeleccionado = 0;
         let costoEnvioSeleccionado = 0;
 
         // ==========================================
-        // 1. RENDERIZACIÓN DEL CATÁLOGO EN TIEMPO REAL
+        // SINCRO EN TIEMPO REAL CON GOOGLE SHEETS
         // ==========================================
-        function cargarCatalogo() {
+        async function cargarCatalogo() {
+            try {
+                // Si la URL del Apps Script aún no está configurada, cargamos los de respaldo
+                if (!GOOGLE_SCRIPT_WEB_APP_URL || GOOGLE_SCRIPT_WEB_APP_URL.includes("XXXXXXXXXXXX")) {
+                    console.log("Usando productos locales de respaldo. Por favor, configura tu GOOGLE_SCRIPT_WEB_APP_URL.");
+                    CATALOGO_ACTIVO = CATALOGO_RESPALDO;
+                } else {
+                    // Consultamos el Apps Script (hace un GET a la pestaña "Productos")
+                    const respuesta = await fetch(GOOGLE_SCRIPT_WEB_APP_URL);
+                    const productosServidor = await respuesta.json();
+                    
+                    if (Array.isArray(productosServidor) && productosServidor.length > 0) {
+                        CATALOGO_ACTIVO = productosServidor;
+                    } else {
+                        CATALOGO_ACTIVO = CATALOGO_RESPALDO;
+                    }
+                }
+            } catch (error) {
+                console.error("Error cargando productos de Google Sheets, cargando respaldo local...", error);
+                CATALOGO_ACTIVO = CATALOGO_RESPALDO;
+            }
+
+            // Ocultar cargador y mostrar cuadrícula
+            estadoCarga.classList.add("hidden");
+            gridProductos.classList.remove("hidden");
+
+            // Limpiar listados anteriores
             gridProductos.innerHTML = "";
-            
-            CATALOGO_PRODUCTOS.forEach(producto => {
-                // Inyección dinámica de las tarjetas HTML para cada producto del catálogo
+            selectorProducto.innerHTML = `<option value="" disabled selected>-- Elige tu arreglo floral --</option>`;
+
+            // Renderizar los productos encontrados
+            CATALOGO_ACTIVO.forEach(producto => {
                 const tarjetaHtml = `
                     <div class="bg-white rounded-xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
                         <div class="relative h-64 overflow-hidden bg-gray-100">
-                            <img src="${producto.imagen}" alt="${producto.nombre}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <img src="${producto.imagen}" alt="${producto.nombre}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&q=80&w=800'">
                             ${producto.badge ? `<span class="absolute top-4 left-4 bg-[#0D2C1E] text-[#FCFBFA] text-[10px] font-bold px-3 py-1 uppercase tracking-wider rounded-full shadow-sm">${producto.badge}</span>` : ""}
                         </div>
                         <div class="p-6 flex-grow flex flex-col justify-between">
@@ -341,7 +341,7 @@
                 `;
                 gridProductos.innerHTML += tarjetaHtml;
 
-                // Añadir el producto como opción dentro de nuestro formulario
+                // Añadirlo al select del formulario
                 const opcionSelect = document.createElement("option");
                 opcionSelect.value = producto.nombre;
                 opcionSelect.dataset.precio = producto.precio;
@@ -350,24 +350,16 @@
             });
         }
 
-        // Accionador para cuando el cliente pulsa el botón "Solicitar" de una tarjeta de flor
         window.seleccionarYRedirigir = function(productoId) {
-            const productoEncontrado = CATALOGO_PRODUCTOS.find(p => p.id === productoId);
+            const productoEncontrado = CATALOGO_ACTIVO.find(p => p.id === productoId);
             if (productoEncontrado) {
-                // Sincronizamos el selector del formulario automáticamente
                 selectorProducto.value = productoEncontrado.nombre;
                 actualizarCalculos();
-                
-                // Desplazamos con una suave animación hasta el formulario de checkout
                 document.getElementById("seccion-pedido").scrollIntoView({ behavior: 'smooth' });
             }
         }
 
-        // ==========================================
-        // 2. CALCULADORA FINANCIERA (PRECIOS DINÁMICOS)
-        // ==========================================
         function actualizarCalculos() {
-            // Obtener el precio del arreglo seleccionado en el dropdown
             const opcionProducto = selectorProducto.options[selectorProducto.selectedIndex];
             if (opcionProducto && opcionProducto.value !== "") {
                 costoArregloSeleccionado = Number(opcionProducto.dataset.precio);
@@ -377,7 +369,6 @@
                 resumenProductoMonto.textContent = `$0.00`;
             }
 
-            // Obtener el costo de envío según la zona elegida
             const opcionZona = selectorZona.options[selectorZona.selectedIndex];
             if (opcionZona && opcionZona.value !== "") {
                 costoEnvioSeleccionado = Number(opcionZona.dataset.costo);
@@ -387,29 +378,25 @@
                 resumenEnvioMonto.textContent = `$0.00`;
             }
 
-            // Actualizar el gran total monetario
             const total = costoArregloSeleccionado + costoEnvioSeleccionado;
             resumenTotal.textContent = `$${total.toFixed(2)}`;
         }
 
-        // Escuchadores de cambio para refrescar los montos
         selectorProducto.addEventListener("change", actualizarCalculos);
         selectorZona.addEventListener("change", actualizarCalculos);
 
         // ==========================================
-        // 3. ENVÍO DE DATOS A GOOGLE SHEETS & REDIRECCIÓN A WHATSAPP
+        // PROCESAR PEDIDO E INTEGRAR CON SHEET + WP
         // ==========================================
         const formulario = document.getElementById("formulario-pedido");
         const botonEnviar = document.getElementById("boton-enviar");
 
         formulario.addEventListener("submit", async function(evento) {
-            evento.preventDefault(); // Evitamos que la página se recargue
+            evento.preventDefault();
 
-            // Bloquear el botón temporalmente para evitar doble clic accidental
             botonEnviar.disabled = true;
-            botonEnviar.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Procesando Pedido Premium...`;
+            botonEnviar.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Registrando Orden Premium...`;
 
-            // Capturar la información ingresada por el usuario
             const producto = selectorProducto.value;
             const cliente = document.getElementById("campo-cliente").value;
             const whatsApp = document.getElementById("campo-whatsapp").value;
@@ -418,7 +405,6 @@
             const fecha = document.getElementById("campo-fecha").value;
             const dedicatoria = document.getElementById("campo-dedicatoria").value || "Sin dedicatoria";
 
-            // Paquete estructurado de datos para nuestra API de Google Sheets
             const payloadDatos = {
                 cliente: cliente,
                 producto: producto,
@@ -428,16 +414,13 @@
                 whatsApp: whatsApp
             };
 
-            // Intentamos enviar los datos a Google Sheets
+            // Guardar en Google Sheets (POST)
             try {
-                // Validación para asegurarnos que se modificó la URL por defecto
                 if (GOOGLE_SCRIPT_WEB_APP_URL && !GOOGLE_SCRIPT_WEB_APP_URL.includes("XXXXXXXXXXXX")) {
                     await fetch(GOOGLE_SCRIPT_WEB_APP_URL, {
                         method: "POST",
-                        mode: "no-cors", // Requerido para evitar problemas CORS con Apps Script
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
+                        mode: "no-cors",
+                        headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(payloadDatos)
                     });
                 }
@@ -445,12 +428,8 @@
                 console.error("Error al registrar en Google Sheets:", error);
             }
 
-            // ==========================================
-            // 4. CONSTRUCCIÓN DE LA REDIRECCIÓN A WHATSAPP
-            // ==========================================
+            // Redirigir a WhatsApp
             const totalFinal = costoArregloSeleccionado + costoEnvioSeleccionado;
-            
-            // Creamos un mensaje extremadamente refinado, estructurado y profesional
             const mensajeWhatsApp = `*AROME - SOLICITUD DE NUEVA ORDEN PREMIUM* 🌸\n\n` +
                                     `*INFORMACIÓN DEL CLIENTE:*\n` +
                                     `• *Nombre:* ${cliente}\n` +
@@ -467,23 +446,18 @@
                                     `• *Total a Pagar:* $${totalFinal.toFixed(2)}\n\n` +
                                     `_A la espera de los métodos de pago para procesar mi orden de inmediato._ ✨`;
 
-            // Codificamos el texto para enviarlo por URL
             const urlWhatsApp = `https://wa.me/${TELEFONO_WHATSAPP_VENTAS}?text=${encodeURIComponent(mensajeWhatsApp)}`;
 
-            // Restaurar el botón original
             botonEnviar.disabled = false;
             botonEnviar.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Confirmar Pedido & Enviar por WhatsApp`;
 
-            // Abrir WhatsApp en una nueva pestaña del navegador del cliente
             window.open(urlWhatsApp, "_blank");
 
-            // Opcional: Reiniciar el formulario
             formulario.reset();
             actualizarCalculos();
-            alert("¡Felicidades! Tu orden se está transfiriendo a WhatsApp con nuestro asesor para cerrar la compra.");
+            alert("¡Felicidades! Tu orden se ha enviado a la base de datos y se transferirá a WhatsApp.");
         });
 
-        // Inicializar el sistema al arrancar el archivo
         window.addEventListener("DOMContentLoaded", cargarCatalogo);
     </script>
 </body>
