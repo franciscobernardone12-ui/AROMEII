@@ -165,11 +165,11 @@
                         <div class="relative">
                             <select id="campo-zona" required class="w-full bg-white border border-gray-200 rounded-lg py-3 px-4 text-[#0D2C1E] focus:outline-none focus:border-[#C5A880] appearance-none transition">
                                 <option value="" disabled selected>-- Selecciona zona --</option>
-                                <option value="Centro" data-costo="0">Zona Centro (Envío Gratis) - $0</option>
-                                <option value="Norte" data-costo="15">Zona Norte - $15</option>
-                                <option value="Sur" data-costo="20">Zona Sur - $20</option>
-                                <option value="Este" data-costo="15">Zona Este - $15</option>
-                                <option value="Oeste" data-costo="15">Zona Oeste - $15</option>
+                                <option value="Centro" data-costo="0">Zona Centro (Envío Gratis) - 0 Bs</option>
+                                <option value="Norte" data-costo="15">Zona Norte - 15 Bs</option>
+                                <option value="Sur" data-costo="20">Zona Sur - 20 Bs</option>
+                                <option value="Este" data-costo="15">Zona Este - 15 Bs</option>
+                                <option value="Oeste" data-costo="15">Zona Oeste - 15 Bs</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
                                 <i class="fa-solid fa-chevron-down text-xs"></i>
@@ -192,15 +192,15 @@
                     <div class="space-y-2 text-sm">
                         <div class="flex justify-between">
                             <span class="text-gray-500">Arreglo Floral:</span>
-                            <span class="font-semibold text-[#0D2C1E]" id="resumen-producto-monto">$0.00</span>
+                            <span class="font-semibold text-[#0D2C1E]" id="resumen-producto-monto">0.00 Bs</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-500">Costo de Envío:</span>
-                            <span class="font-semibold text-[#0D2C1E]" id="resumen-envio-monto">$0.00</span>
+                            <span class="font-semibold text-[#0D2C1E]" id="resumen-envio-monto">0.00 Bs</span>
                         </div>
                         <div class="border-t border-gray-200 pt-2 flex justify-between font-bold text-base">
                             <span class="text-[#0D2C1E]">Total a Pagar:</span>
-                            <span class="text-[#C5A880]" id="resumen-total">$0.00</span>
+                            <span class="text-[#C5A880]" id="resumen-total">0.00 Bs</span>
                         </div>
                     </div>
                 </div>
@@ -237,6 +237,7 @@
 
         // ==========================================
         // CATÁLOGO DE RESPALDO (Por si falla internet al conectar con Sheets)
+        // Valores por defecto actualizados a la moneda local (Bs)
         // ==========================================
         const CATALOGO_RESPALDO = [
             {
@@ -259,26 +260,7 @@
             }
         ];
 
-        let CATALOGO_ACTIVO = [
-            {
-                id: 1,
-                nombre: "Caja Romántica de Rosas (Local)",
-                precio: 250,
-                categoria: "MÁS VENDIDO",
-                descripcion: "24 espléndidas rosas rojas seleccionadas en sofisticada caja rígida de autor.",
-                imagen: "https://laflora.ae/cdn/shop/files/LAFLORA-1_7878fc6d-bc78-4662-88f5-43102715c060.jpg?v=1764680685&width=1946",
-                badge: "Más Vendido"
-            },
-            {
-                id: 2,
-                nombre: "Ramo de Tulipanes Elegantes (Local)",
-                precio: 380,
-                categoria: "EDICIÓN PRIMAVERA",
-                descripcion: "15 hermosos tulipanes holandeses en tonos rosados.",
-                imagen: "https://www.florismdeart.com.my/cdn/shop/products/IMG_1256.jpg?v=1638338321&width=1946",
-                badge: "Primavera"
-            }
-        ];
+        let CATALOGO_ACTIVO = [...CATALOGO_RESPALDO];
 
         // Elementos del DOM
         const gridProductos = document.getElementById("grid-productos");
@@ -297,12 +279,10 @@
         // ==========================================
         async function cargarCatalogo() {
             try {
-                // Si la URL del Apps Script aún no está configurada, cargamos los de respaldo
                 if (!GOOGLE_SCRIPT_WEB_APP_URL || GOOGLE_SCRIPT_WEB_APP_URL.includes("XXXXXXXXXXXX")) {
                     console.log("Usando productos locales de respaldo. Por favor, configura tu GOOGLE_SCRIPT_WEB_APP_URL.");
                     CATALOGO_ACTIVO = CATALOGO_RESPALDO;
                 } else {
-                    // Consultamos el Apps Script (hace un GET a la pestaña "Productos")
                     const respuesta = await fetch(GOOGLE_SCRIPT_WEB_APP_URL);
                     const productosServidor = await respuesta.json();
                     
@@ -317,15 +297,12 @@
                 CATALOGO_ACTIVO = CATALOGO_RESPALDO;
             }
 
-            // Ocultar cargador y mostrar cuadrícula
             estadoCarga.classList.add("hidden");
             gridProductos.classList.remove("hidden");
 
-            // Limpiar listados anteriores
             gridProductos.innerHTML = "";
             selectorProducto.innerHTML = `<option value="" disabled selected>-- Elige tu arreglo floral --</option>`;
 
-            // Renderizar los productos encontrados
             CATALOGO_ACTIVO.forEach(producto => {
                 const tarjetaHtml = `
                     <div class="bg-white rounded-xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
@@ -341,7 +318,7 @@
                             </div>
                             <div>
                                 <div class="flex justify-between items-center pt-4 border-t border-gray-50">
-                                    <span class="text-2xl font-bold text-[#0D2C1E] font-serif-premium">$${producto.precio}</span>
+                                    <span class="text-2xl font-bold text-[#0D2C1E] font-serif-premium">${producto.precio} <span class="text-sm font-sans">Bs</span></span>
                                     <button onclick="seleccionarYRedirigir(${producto.id})" class="bg-[#C5A880] hover:bg-[#0D2C1E] text-white text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full transition duration-300">
                                         Solicitar
                                     </button>
@@ -352,11 +329,10 @@
                 `;
                 gridProductos.innerHTML += tarjetaHtml;
 
-                // Añadirlo al select del formulario
                 const opcionSelect = document.createElement("option");
                 opcionSelect.value = producto.nombre;
                 opcionSelect.dataset.precio = producto.precio;
-                opcionSelect.textContent = `${producto.nombre} - $${producto.precio}`;
+                opcionSelect.textContent = `${producto.nombre} - ${producto.precio} Bs`;
                 selectorProducto.appendChild(opcionSelect);
             });
         }
@@ -374,23 +350,23 @@
             const opcionProducto = selectorProducto.options[selectorProducto.selectedIndex];
             if (opcionProducto && opcionProducto.value !== "") {
                 costoArregloSeleccionado = Number(opcionProducto.dataset.precio);
-                resumenProductoMonto.textContent = `$${costoArregloSeleccionado.toFixed(2)}`;
+                resumenProductoMonto.textContent = `${costoArregloSeleccionado.toFixed(2)} Bs`;
             } else {
                 costoArregloSeleccionado = 0;
-                resumenProductoMonto.textContent = `$0.00`;
+                resumenProductoMonto.textContent = `0.00 Bs`;
             }
 
             const opcionZona = selectorZona.options[selectorZona.selectedIndex];
             if (opcionZona && opcionZona.value !== "") {
                 costoEnvioSeleccionado = Number(opcionZona.dataset.costo);
-                resumenEnvioMonto.textContent = `$${costoEnvioSeleccionado.toFixed(2)}`;
+                resumenEnvioMonto.textContent = `${costoEnvioSeleccionado.toFixed(2)} Bs`;
             } else {
                 costoEnvioSeleccionado = 0;
-                resumenEnvioMonto.textContent = `$0.00`;
+                resumenEnvioMonto.textContent = `0.00 Bs`;
             }
 
             const total = costoArregloSeleccionado + costoEnvioSeleccionado;
-            resumenTotal.textContent = `$${total.toFixed(2)}`;
+            resumenTotal.textContent = `${total.toFixed(2)} Bs`;
         }
 
         selectorProducto.addEventListener("change", actualizarCalculos);
@@ -425,7 +401,6 @@
                 whatsApp: whatsApp
             };
 
-            // Guardar en Google Sheets (POST)
             try {
                 if (GOOGLE_SCRIPT_WEB_APP_URL && !GOOGLE_SCRIPT_WEB_APP_URL.includes("XXXXXXXXXXXX")) {
                     await fetch(GOOGLE_SCRIPT_WEB_APP_URL, {
@@ -439,22 +414,21 @@
                 console.error("Error al registrar en Google Sheets:", error);
             }
 
-            // Redirigir a WhatsApp
             const totalFinal = costoArregloSeleccionado + costoEnvioSeleccionado;
             const mensajeWhatsApp = `*AROME - SOLICITUD DE NUEVA ORDEN PREMIUM* 🌸\n\n` +
                                     `*INFORMACIÓN DEL CLIENTE:*\n` +
                                     `• *Nombre:* ${cliente}\n` +
                                     `• *Contacto:* ${whatsApp}\n\n` +
                                     `*DETALLE DEL PRODUCTO:*\n` +
-                                    `• *Arreglo:* ${producto} ($${costoArregloSeleccionado})\n\n` +
+                                    `• *Arreglo:* ${producto} (${costoArregloSeleccionado} Bs)\n\n` +
                                     `*LOGÍSTICA DE ENTREGA:*\n` +
                                     `• *Dirección:* ${direccion}\n` +
-                                    `• *Zona:* ${zonaEnvio} ($${costoEnvioSeleccionado})\n` +
+                                    `• *Zona:* ${zonaEnvio} (${costoEnvioSeleccionado} Bs)\n` +
                                     `• *Fecha de Entrega:* ${fecha}\n\n` +
                                     `*TARJETA DE DEDICATORIA:*\n` +
                                     `_"${dedicatoria}"_\n\n` +
                                     `*RESUMEN FINANCIERO:*\n` +
-                                    `• *Total a Pagar:* $${totalFinal.toFixed(2)}\n\n` +
+                                    `• *Total a Pagar:* ${totalFinal.toFixed(2)} Bs\n\n` +
                                     `_A la espera de los métodos de pago para procesar mi orden de inmediato._ ✨`;
 
             const urlWhatsApp = `https://wa.me/${TELEFONO_WHATSAPP_VENTAS}?text=${encodeURIComponent(mensajeWhatsApp)}`;
